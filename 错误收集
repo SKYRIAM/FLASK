@@ -1,2 +1,0 @@
-1.urls must start with a leading slash
-@api.route('/index')  前面没有加上/
