@@ -1,0 +1,25 @@
+1.在这章里首先在用户表里增加了一些新的关于个人信息的新的数据
+2.为了实现记录登录时间，在@auth.before_request()函数中增加了可以更新数据库中登录时间的函数
+```
+#-----------刷新用户的最后访问时间----------
+	def ping(self):
+		self.last_seen=datetime.utcnow()
+		db.session.add(self)
+```
+3. 实现用户资料界面
+首先需要需要一个用户资料界面的路由  
+```
+@main.route('/user/<name>')
+def user(name):
+	user = User.query.filter_by(name=name).first()
+	if user is None:
+		abort(404) #http://docs.jinkan.org/docs/flask/patterns/errorpages.html
+	return render_template('user.html',user=user)
+```
+然后需要一个显示信息的模板文件(user.html)，需要在base.html中将资料界面的链接添加进去
+
+4.实现用户资料编辑器
+需要在app/main/forms.py中建立新的表单，表单包括了可以更改的个人信息，然后需要资料编辑路由，将修改后的数据更新到数据库里，然后也需要在user.html  
+中添加资料编辑的链接，同样需要一个模板文件来实例化表单。
+
+
