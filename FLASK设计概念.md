@@ -8,6 +8,16 @@
 - web框架
 一种建立web应用的方式
 
-2. WSGI和Werkzeug
+2. WSGI和Werkzeug和JINJA2
+- WSGI
+是web服务器和web应用程序直接的协议
+- Werkzeug
+Werkzeug是一个WSGI工具包，它可以作为web框架的底层库。封装了一些底层函数
+- Jinja2
+是一个模板引擎，用来渲染数据和模板
+
+3.flask的设计理念是什么
+
+4.flask的核心代码实现
 
 
